@@ -20,13 +20,17 @@ int main(int argc, char* argv[]){
    	    while (fgets(line, 65563, file)){
         	strcat(fileText, line);
 	    }
-	    printf("%d\n", check_brackets(fileText));
-	    fclose(file);
-	    char *result = formatFigureBrackets(fileText);
-	    FILE *file_res = fopen(argv[1], "w");
-	    fputs(result, file_res);
-	    printf("Complete\n");
-	    fclose(file_res);
+	    
+	    if (check_brackets(fileText) == 0){
+		printf("error brackets");
+	    }
+	    else{
+	        fclose(file);
+	        char *result = formatFigureBrackets(fileText);
+	        FILE *file_res = fopen(argv[1], "w");
+	        fputs(result, file_res);
+      	        fclose(file_res);
+	    }
 	}
     }
     return 0;
